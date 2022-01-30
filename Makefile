@@ -5,3 +5,6 @@ lint:
 
 test:
 	poetry run pytest . -s
+
+run:
+	poetry run uvicorn src.infra.http.fastapi_server:app --port=8000 --reload

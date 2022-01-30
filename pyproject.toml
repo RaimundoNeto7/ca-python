@@ -6,12 +6,17 @@ authors = ["Raimundo Neto <raimundoneto.rn17@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+fastapi = "^0.73.0"
+uvicorn = {extras = ["standard"], version = "^0.17.1"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 flake8 = "^4.0.1"
 black = "^21.12b0"
 isort = "^5.10.1"
+
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
