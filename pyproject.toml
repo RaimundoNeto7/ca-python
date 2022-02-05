@@ -8,6 +8,7 @@ authors = ["Raimundo Neto <raimundoneto.rn17@gmail.com>"]
 python = "^3.9"
 fastapi = "^0.73.0"
 uvicorn = {extras = ["standard"], version = "^0.17.1"}
+pre-commit = "^2.17.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
