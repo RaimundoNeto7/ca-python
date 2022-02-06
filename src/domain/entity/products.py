@@ -30,3 +30,15 @@ class Products:
             f"quantity={self.quantity}, "
             f"is_active={self.is_active})"
         )
+
+    def __eq__(self, __o: object) -> bool:
+        return all(
+            [
+                self.name == __o.name,
+                self.description == __o.description,
+                self.brand == __o.brand,
+                self.price == __o.price,
+                self.quantity == __o.quantity,
+                self.is_active == __o.is_active,
+            ]
+        )
