@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-toml
+      - id: check-yaml
+      - id: check-docstring-first
+      - id: detect-private-key
+      - id: check-merge-conflict
+
+  - repo: https://github.com/pre-commit/pygrep-hooks 
+    rev: v1.9.0 
+    hooks:
+      - id: python-check-mock-methods
+      - id: python-use-type-annotations
+
+  - repo: local
+    hooks:
+    - id: lint and format
+      name: Lint and format files
+      entry: make lint
+      language: system
+      types: [python]
+    - id: tests
+      name: Run tests
+      entry: make tests
+      language: system
+      types: [python]
