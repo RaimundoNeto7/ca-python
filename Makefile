@@ -3,7 +3,7 @@ lint:
 	@poetry run black . --exclude=.venv
 	@poetry run flake8 --exclude=.venv
 
-test:
+tests:
 	poetry run pytest . -s
 
 run:
