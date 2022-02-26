@@ -5,7 +5,7 @@ description = "Clean Archtecture in Python"
 authors = ["Raimundo Neto <raimundoneto.rn17@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "3.9.10"
 fastapi = "^0.73.0"
 uvicorn = {extras = ["standard"], version = "^0.17.1"}
 pre-commit = "^2.17.0"
