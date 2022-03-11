@@ -1,10 +1,13 @@
+.PHONY: lint
 lint:
 	@poetry run isort .
 	@poetry run black . --exclude=.venv
 	@poetry run flake8 --exclude=.venv
 
+.PHONY: tests
 tests:
 	poetry run pytest . -s
 
+.PHONY: run
 run:
 	poetry run uvicorn src.infra.http.fastapi_server:app --port=8000 --reload
