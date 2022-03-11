@@ -8,6 +8,10 @@ lint:
 tests:
 	poetry run pytest . -s
 
+.PHONY: packages
+packages:
+	poetry install
+
 .PHONY: run
 run:
 	poetry run uvicorn src.infra.http.fastapi_server:app --port=8000 --reload
