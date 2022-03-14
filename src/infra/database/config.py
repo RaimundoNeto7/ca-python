@@ -8,6 +8,11 @@ SQLALCHEMY_DATABASE_URL = environ.get(
     "DATABASE_URL", "postgres://postgres:postgres@postgres/postgres"
 )
 
+if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
+    SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace(
+        "postgres://", "postgresql://", 1
+    )
+
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
