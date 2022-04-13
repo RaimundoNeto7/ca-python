@@ -5,8 +5,14 @@ from src.application.controllers.products_controller import (
     get_products_controller,
 )
 from src.application.schemas.products import ProductsSchema
+from src.infra.database.config import init_db
 
 app = FastAPI()
+
+
+@app.on_event("startup")
+async def startup_event():
+    init_db()
 
 
 @app.get("/")
