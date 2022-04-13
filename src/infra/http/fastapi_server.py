@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, HTTPException, status
 
 from src.application.controllers.products_controller import (
@@ -17,7 +19,7 @@ async def startup_event():
 
 @app.get("/")
 def read_root():
-    return {"Hello": "Servidor discord"}
+    return {"status": "Running", "env": os.getenv("ENV")}
 
 
 @app.get("/products")
