@@ -16,3 +16,23 @@ Imagine em um cenário que você precise implementar uma <b>API Rest</b> para um
 ## Componentes da Arquitetura Limpa
 
 <i>... em construção.</i>
+
+# Executar localmente
+
+1. Você precisa definir um arquivo `.env` contendo as seguintes variáveis:
+```
+ENV=
+DATABASE_URL=
+```
+2. Suba o banco de dados descrito no `docker-compose.yml`:
+```
+docker-compose up
+```
+3. Instale todas as dependencias necessárias para o projeto descritas no `pyproject.toml`:
+```
+make packages
+```
+4. Execute o comando para rodar localmente:
+```
+make run
+```
