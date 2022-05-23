@@ -1,7 +1,7 @@
-.PHONY: lint
-lint:
-	@poetry run isort .
+.PHONY: fmt
+fmt:
 	@poetry run black . --exclude=.venv
+	@poetry run isort .
 	@poetry run flake8 --exclude=.venv
 
 .PHONY: tests
