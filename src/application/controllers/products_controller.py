@@ -5,18 +5,20 @@ from src.infra.repository.products_repository_postgres import ProductsRepository
 
 
 def get_products_controller():
-    get_produtcs_use_case = GetProducts(ProductsRepositoryPostgres(get_db().__next__()))
-    return get_produtcs_use_case.execute()
+    with get_db() as session:
+        get_produtcs_use_case = GetProducts(ProductsRepositoryPostgres(session))
+        return get_produtcs_use_case.execute()
 
 
 def add_product_controller(name, description, brand, price, quantity, is_active):
-    add_product_use_case = AddProduct(
-        ProductsRepositoryPostgres(get_db().__next__()),
-        name,
-        description,
-        brand,
-        price,
-        quantity,
-        is_active,
-    )
-    return add_product_use_case.execute()
+    with get_db() as session:
+        add_product_use_case = AddProduct(
+            ProductsRepositoryPostgres(session),
+            name,
+            description,
+            brand,
+            price,
+            quantity,
+            is_active,
+        )
+        return add_product_use_case.execute()

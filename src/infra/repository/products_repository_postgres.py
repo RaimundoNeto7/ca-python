@@ -4,7 +4,6 @@ from sqlalchemy.orm.session import Session
 
 from src.domain.entity.products import Products
 from src.domain.repository.products_repository import ProductsRepository
-from src.infra.database.config import get_db
 from src.infra.database.models.products import Products as ProductsModel
 
 
