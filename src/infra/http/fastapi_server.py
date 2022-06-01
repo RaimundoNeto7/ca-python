@@ -3,11 +3,13 @@ import os
 from fastapi import FastAPI, HTTPException, status
 
 from src.application.controllers.products_controller import (
+    ProductsController,
     add_product_controller,
     get_products_controller,
 )
 from src.application.schemas.products import ProductsSchema
-from src.infra.database.config import init_db
+from src.infra.database.config import get_db, init_db
+from src.infra.repository.products_repository_postgres import ProductsRepositoryPostgres
 
 app = FastAPI()
 
@@ -25,7 +27,10 @@ def read_root():
 @app.get("/products")
 def get_products():
     try:
-        return get_products_controller()
+        with get_db() as session:
+            repository = ProductsRepositoryPostgres(session=session)
+            products_controller = ProductsController(repository=repository)
+            return products_controller.get_products_controller()
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=e.__traceback__
@@ -35,7 +40,10 @@ def get_products():
 @app.post("/products")
 def post_products(product: ProductsSchema):
     try:
-        return add_product_controller(**product.dict())
+        with get_db() as session:
+            repository = ProductsRepositoryPostgres(session=session)
+            products_controller = ProductsController(repository=repository)
+        return products_controller.add_product_controller(**product.dict())
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=e.__traceback__
